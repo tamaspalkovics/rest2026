@@ -17,13 +17,13 @@ app.get('/hello', (req, res) => {
     res.send("Hello itt az Express webszerver!");
 })
 
-app.get('/api.courses', (req, res) => {
+app.get('/api/courses', (req, res) => {
     res.json(courses);
 })
 
 
 //Egyetlen kurzus adatainak a lekérése URL paraméter alapján
-app.get('/api.courses/:id', (req, res) => {
+app.get('/api/courses/:id', (req, res) => {
     //Keresés a tömbben
     const course = courses.find(c => c.id === parseInt(req.params.id));
     //A keresett elem nem található (404) státusz kód és hibaüzenet visszaadása
@@ -32,7 +32,7 @@ app.get('/api.courses/:id', (req, res) => {
 })
 
 //POST végpont létrehozása kurzus adatok küldésére a szervernek
-app.post('/api.courses', (req, res) => {
+app.post('/api/courses', (req, res) => {
 
 const course = {
     id: courses.length +1,
@@ -43,7 +43,7 @@ res.status(200).json({ message: 'Új elem hozzáadva!', data: req.body});
 })
 
 // DELETE végpont a kurzus adatok törlésére
-app.delete('/api.courses/:id', (req,res) => {
+app.delete('/api/courses/:id', (req,res) => {
     //Keresés a tömbben ID (URL paraméter alapján)
     const courses = course.find(c => c.id === parseInt(req.params.id));
     //A keresett elem nem található (404) státusz kód és hibaüzenet visszaadása
